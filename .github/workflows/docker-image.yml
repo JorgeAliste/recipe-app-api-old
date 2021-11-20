@@ -1,45 +1,17 @@
-<<<<<<< HEAD
 name: Docker Image CI
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - name: Install Dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install docker-compose
-    - name: Test django app with docker
-      run: docker-compose run --rm app sh -c "python manage.py test && flake8"
-=======
-name: Docker Image CI
-
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
 #     - name: Build the Docker image
 #       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
     - name: Install Dependencies
@@ -48,4 +20,3 @@ jobs:
         pip install docker-compose
     - name: Test django app with docker
       run: docker-compose run --rm app sh -c "python manage.py test && flake8"
->>>>>>> 0bb641050ee9942de642e7fe7a1f2c67723767a6
