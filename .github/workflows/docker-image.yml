@@ -19,4 +19,4 @@ jobs:
         python -m pip install --upgrade pip
         pip install docker-compose
     - name: Test django app with docker
-      run: docker-compose run --rm app sh -c "python manage.py test && flake8"
+      run: docker-compose run --rm app sh -c "python manage.py wait_for_db && python manage.py test && flake8"
