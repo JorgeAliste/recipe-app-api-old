@@ -21,4 +21,4 @@ jobs:
       - name: Wait for the database to be up and running
         run: docker-compose run app sh -c "python manage.py wait_for_db"
       - name: Test django app with docker
-        run: docker-compose run app sh -c "python manage.py python manage.py test && flake8"
+        run: docker-compose run app sh -c "python manage.py test && flake8"
