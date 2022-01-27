@@ -66,7 +66,11 @@ class PublicUserApiTest(TestCase):
 
     def test_create_token_for_user(self):
         """Test that a token is created for the user"""
-        payload = {'email': 'test@app.com', 'password': 'testpass', 'name': 'Test name'}
+        payload = {
+            'email': 'test@app.com',
+            'password': 'testpass',
+            'name': 'Test name'
+        }
         create_user(**payload)
         res = self.client.post(TOKEN_URL, payload)
 
@@ -76,7 +80,11 @@ class PublicUserApiTest(TestCase):
     def test_create_token_invalid_credentials(self):
         """Test that token is not created if invalid credentials are given"""
         create_user(email='test@app.com', password='testpass')
-        payload = {'email': 'test@app.com', 'password': 'wrong', 'name': 'Test name'}
+        payload = {
+            'email': 'test@app.com',
+            'password': 'wrong',
+            'name': 'Test name'
+        }
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
@@ -84,7 +92,11 @@ class PublicUserApiTest(TestCase):
 
     def test_create_token_no_user(self):
         """Test that token is not created if user does not exist"""
-        payload = {'email': 'test@app.com', 'password': 'testpass', 'name': 'Test name'}
+        payload = {
+            'email': 'test@app.com',
+            'password': 'testpass',
+            'name': 'Test name'
+        }
         res = self.client.post(TOKEN_URL, payload)
 
         self.assertNotIn('token', res.data)
