@@ -74,7 +74,9 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         if ingredients:
             ingredients_id = self._params_to_ints(ingredients)
-            queryset = queryset.filter(ingredients__id__in=ingredients_id).distinct()
+            queryset = queryset.filter(
+                ingredients__id__in=ingredients_id
+            ).distinct()
 
         return queryset.filter(user=self.request.user).order_by('-id')
 
